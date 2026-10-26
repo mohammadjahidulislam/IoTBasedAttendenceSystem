@@ -29,18 +29,29 @@ Latex code for project proposal:
 \usepackage{float}
 
 \usepackage{enumitem}
+
 \usepackage{xcolor}
+
 \usepackage{listings}
+
 \usepackage{pgfgantt}
+
 \usepackage{tikz}
+
 \usetikzlibrary{shapes.geometric,shapes.misc,shapes.multipart,arrows.meta,positioning,fit,calc,backgrounds}
+
 \usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!60!black,citecolor=blue!50!black]{hyperref}
  
 \lstdefinestyle{java}{
+
   language=Java,
+  
   basicstyle=\ttfamily\footnotesize,
+  
   keywordstyle=\color{blue!60!black}\bfseries,
+  
   commentstyle=\color{green!40!black}\itshape,
+  
   stringstyle=\color{red!60!black},
   numbers=left, numberstyle=\tiny\color{gray},
   breaklines=true, frame=single, framerule=0.3pt,
