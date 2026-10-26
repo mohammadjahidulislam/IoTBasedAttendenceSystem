@@ -9,15 +9,25 @@ Latex code for project proposal:
 
 
 
+
+
+
 \documentclass[11pt,a4paper]{article}
  
 \usepackage[margin=1in]{geometry}
+
 \usepackage[T1]{fontenc}
+
 \usepackage{graphicx}
+
 \usepackage{booktabs}
+
 \usepackage{array}
+
 \usepackage{longtable}
+
 \usepackage{float}
+
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{listings}
