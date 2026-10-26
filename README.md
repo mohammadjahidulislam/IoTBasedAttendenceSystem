@@ -52,93 +52,151 @@ Latex code for project proposal:
   
   commentstyle=\color{green!40!black}\itshape,
   
-  stringstyle=\color{red!60!black},
+  stringstyle=\color{red!60!black},\
+  
   numbers=left, numberstyle=\tiny\color{gray},
+  
   breaklines=true, frame=single, framerule=0.3pt,
+  
   backgroundcolor=\color{gray!6},
+  
   showstringspaces=false, tabsize=2
 }
  
 \newcommand{\projtitle}{IoT Based Smart Attendance System }
  
 \title{\projtitle}
+
 \author{Md Jahidul Islam}
+
 \date{\today}
  
 \begin{document}
  
 %=====================================================================
+
 % TITLE PAGE
+
 %=====================================================================
+
 \begin{titlepage}
+
 \centering
+
 \vspace*{0.8cm}
+
 {\LARGE\bfseries \projtitle\par}
+
 \vspace{0.3cm}
+
 {\large with ESP32, RFID/QR Scanning and a Java Cloud Dashboard\par}
+
 \vspace{0.3cm}
+
 {\normalsize Final Capstone Project -- Part I: Proposal and Prototyping\par}
+
 \vspace{1.4cm}
  
 {\renewcommand{\arraystretch}{1.7}
+
 \begin{tabular}{|>{\bfseries}p{4cm}|p{8.5cm}|}
+
 \hline
+
 \multicolumn{2}{|c|}{\textbf{Submitted By (Student)}}\\
+
 \hline
+
 Name & Md Jahidul Islam\\
+
 \hline
+
 Student ID & IT24018\\
+
 \hline
+
 Course & Software Engineering and Project Management\\
+
 \hline
+
 Department & Information and Communication Technology\\
+
 \hline
+
 University & Mawlana Bhashani Science and Technology University\\
 \hline
+
 \end{tabular}}
  
 \vspace{1.0cm}
  
 {\renewcommand{\arraystretch}{1.7}
+
 \begin{tabular}{|>{\bfseries}p{4cm}|p{8.5cm}|}
+
 \hline
+
 \multicolumn{2}{|c|}{\textbf{Supervised By (Teacher)}}\\
+
 \hline
+
 Name & Dr. Ziaur Rahman\\
+
 \hline
+
 Designation & Professor\\
+
 \hline
+
 Department & Dept. of ICT\\
+
 \hline
+
 University & MBSTU\\
+
 \hline
+
 \end{tabular}}
  
 \vspace{1.0cm}
+
 \textbf{Date:} \today\\[6pt]
+
 \textbf{GitHub:} \url{https://github.com/mohammadjahidulislam/IoTBasedAttendenceSystem}
 \vfill
+
 \end{titlepage}
  
 \begin{abstract}
+
 Manual roll-call wastes class time and is prone to proxy attendance and recording errors. This proposal describes an IoT-based attendance system in which a classroom device built around an ESP32 microcontroller reads RFID cards (and QR codes) of students, validates the scan, and sends it over Wi-Fi using MQTT/HTTPS to a Java server. Teachers see live attendance on a dashboard and obtain reports automatically. The document presents the problem, objectives, requirements, hardware and software architecture, an Iterative-Incremental development plan with schedule, milestones, deliverables and Gantt chart, the six required UML diagrams, a risk and cost analysis, and a simple Java prototype with more than five classes taken from the class diagram.
+
 \end{abstract}
+
  
 \newpage
+
 \tableofcontents
+
 \newpage
  
 %=====================================================================
+
 \section{Introduction}
+
 \subsection{Background}
+
 Attendance is a basic academic requirement, yet most classes still use paper sheets or verbal roll-call. This takes several minutes per class, and signatures can be forged. Internet of Things (IoT) devices are cheap, small and always connected, so they are a natural fit for automating identification and reporting.
  
 \subsection{Problem Statement}
+
 \begin{itemize}[noitemsep]
+
   \item Manual attendance consumes lecture time and is error-prone.
   \item Proxy attendance (one student signing for another) is hard to detect.
   \item Consolidating paper sheets into semester reports is slow.
   \item Teachers get no real-time view of who is present.
+  
 \end{itemize}
  
 \subsection{Objectives}
