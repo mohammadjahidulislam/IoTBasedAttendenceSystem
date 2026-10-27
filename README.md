@@ -31,6 +31,7 @@ the problem, objectives, requirements, hardware and software architecture, an It
 six required UML diagrams, a risk and cost analysis, and a simple Java prototype with more
 than five classes taken from the class diagram.
 1
+
 Contents
 1 Introduction 3
 1.1 Background . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
