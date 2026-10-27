@@ -200,96 +200,164 @@ Attendance is a basic academic requirement, yet most classes still use paper she
 \end{itemize}
  
 \subsection{Objectives}
+
 \begin{enumerate}[noitemsep]
+
   \item Design and build an ESP32-based classroom device that identifies students by RFID card or QR code.
   \item Transmit each scan securely to a central server in near real time.
   \item Store attendance in a relational database and prevent duplicate or invalid entries.
   \item Provide a teacher dashboard with live status, history and CSV/PDF reports.
   \item Keep working during short network outages by buffering scans on the device.
   \item Deliver the work using a documented software process with schedule, milestones and UML models.
+  
 \end{enumerate}
  
 \subsection{Scope}
-\textbf{In scope:} one device per classroom, student identification, live dashboard, reports, device management, offline buffering.
+
+\textbf{In scope:} 
+one device per classroom, student identification, live dashboard, reports, device management, offline buffering.
 \textbf{Out of scope (this phase):} face recognition, payment or library integration, native mobile apps, integration with the university ERP.
  
 \subsection{Significance}
+
 The system saves lecture time, improves data accuracy, discourages proxy attendance and provides a practical, low-cost IoT project that can be scaled to many rooms.
  
 %=====================================================================
+
 \section{Review of Existing Approaches}
+
 \begin{table}[H]
+
 \centering
+
 \small
+
 \begin{tabular}{p{3.2cm}p{4.2cm}p{4.8cm}}
+
 \toprule
+
 \textbf{Approach} & \textbf{Advantage} & \textbf{Limitation}\\
+
 \midrule
+
 Paper roll-call & No cost & Slow, easy to forge, hard to analyse\\
+
 Biometric (fingerprint) & Hard to fake & Costly, queues, hygiene concerns\\
+
 App-only QR attendance & No extra hardware & Phone sharing, GPS spoofing, needs student phones\\
+
 \textbf{Proposed: ESP32 + RFID/QR} & Low cost, fast tap, physical presence required, real-time data & Needs Wi-Fi and cards; mitigated by offline buffer\\
+
 \bottomrule
+
 \end{tabular}
+
 \caption{Comparison of attendance approaches.}
+
 \end{table}
  
 %=====================================================================
+
 \section{Proposed System}
-\subsection{Overview}
+
+\subsection{Overview
+
 A student taps an RFID card (or shows a QR code) at the classroom device. The ESP32 reads the unique ID, stamps it with time from the real-time clock, and publishes it to the server. The server validates the student against the active class session, stores the record, and sends back a result that the device shows on an OLED screen with a buzzer/LED signal. The teacher watches the dashboard update live.
  
 \subsection{System Architecture}
+
 \begin{figure}[H]
+
 \centering
+
 \begin{tikzpicture}[
+
   node distance=0.9cm and 0.9cm,
+  
   box/.style={draw,rounded corners,align=center,minimum height=1.0cm,minimum width=2.3cm,font=\small,fill=blue!6},
+  
   dev/.style={draw,rounded corners,align=center,minimum height=1.0cm,minimum width=2.3cm,font=\small,fill=orange!12},
+  
   srv/.style={draw,rounded corners,align=center,minimum height=1.0cm,minimum width=2.3cm,font=\small,fill=green!10},
+  
   arr/.style={-{Stealth[length=2.5mm]},thick}
+  
+  
 ]
 \node[dev] (card) {Student\\RFID card / QR};
+
 \node[dev,right=of card] (esp) {ESP32 device\\(RC522, OLED,\\buzzer, RTC)};
+
 \node[box,right=of esp] (mqtt) {Wi-Fi\\MQTT / HTTPS};
+
 \node[srv,right=of mqtt] (srv) {Java server\\(Javalin API)};
+
 \node[srv,below=1.1cm of srv] (db) {Database\\(MySQL)};
+
 \node[box,below=1.1cm of mqtt] (dash) {Teacher\\dashboard};
+
 \node[box,below=1.1cm of esp] (admin) {Admin\\panel};
+
 \draw[arr] (card) -- node[above,font=\scriptsize]{tap} (esp);
+
 \draw[arr] (esp) -- node[above,font=\scriptsize]{scan} (mqtt);
+
 \draw[arr] (mqtt) -- (srv);
+
 \draw[arr] (srv) -- (db);
+
 \draw[arr] (srv) -- (dash);
+
 \draw[arr] (admin) -- (srv);
+
 \draw[arr,dashed] (srv.north) -- ++(0,0.7) -| node[pos=0.25,above,font=\scriptsize]{result} (esp.north);
+
 \end{tikzpicture}
+
 \caption{High-level IoT architecture.}
+
 \end{figure}
  
 \subsection{Working Flow}
+
 \begin{enumerate}[noitemsep]
+
   \item The teacher starts a class session on the dashboard.
+  
   \item The student taps a card; the ESP32 reads the UID.
+  
   \item The ESP32 publishes \texttt{\{uid, deviceId, timestamp\}} to topic \texttt{attendance/scan}.
+  
   \item The server checks that the UID belongs to a student enrolled in the active course and has not already been marked.
   \item An attendance record (Present or Late) is saved and the result is returned to the device.
   \item The OLED shows the student's name; green LED and one beep mean success, red LED and two beeps mean rejection.
   \item If Wi-Fi is down, the ESP32 stores scans in flash memory and uploads them when the connection returns.
+  
 \end{enumerate}
  
 %=====================================================================
+
 \section{Hardware Components}
+
 The component details below were collected from manufacturer and retailer product pages for the ESP32 DevKit V1 and the RC522 RFID module. Prices vary by seller and country, so the cost column is only a planning estimate that must be re-checked before purchase.
  
 \begin{table}[H]
+
 \centering
+
 \small
+
 \begin{tabular}{p{2.9cm}p{6.4cm}p{1.6cm}p{1.5cm}}
+
 \toprule
+
 \textbf{Component} & \textbf{Key specifications} & \textbf{Role} & \textbf{Est. cost (BDT)}\\
+
 \midrule
-ESP32 DevKit V1 (ESP-WROOM-32) & Dual-core Xtensa LX6 up to 240\,MHz, 520\,KB SRAM, 4\,MB flash, Wi-Fi 802.11 b/g/n, Bluetooth 4.2/BLE, about 34 GPIO, 3.3\,V logic & Main controller & 600--900\\
+
+ESP32 DevKit V1 (ESP-WROOM-32) & Dual-core Xtensa LX6 up to 240\,MHz, 520\,KB SRAM, 4\,MB flash, Wi-Fi 802.11 b/g/n, Bluetooth 4.2/BLE, about 34 GPIO, 3.3\,V 
+logic & Main controller & 600--900\\
+
 RC522 RFID module (MFRC522) & 13.56\,MHz, SPI up to 10\,Mbit/s, 3.3\,V only, about 13--26\,mA when active, reads ISO/IEC 14443-A / MIFARE cards at roughly 2--5\,cm, usually sold with one card and one key tag & Student identification & 150--300\\
 RFID cards / key tags (MIFARE 1K) & 13.56\,MHz passive tags, unique UID per tag & Student ID & 20--40 each\\
 0.96'' OLED (SSD1306) & I2C, 128$\times$64 pixels & Status and name display & 250--400\\
