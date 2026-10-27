@@ -3,6 +3,7 @@ Name:Md Jahidul Islam
 ID:It24018
 
 # IoTBasedAttendenceSystem
+Proposal link: https://github.com/mohammadjahidulislam/IoTBasedAttendenceSystem/blob/main/SEPM_Project_Proposal.pdf
 
 
 
