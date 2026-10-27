@@ -7,6 +7,86 @@ Proposal link: https://github.com/mohammadjahidulislam/IoTBasedAttendenceSystem/
 
 
 
+###Review of the existing approches:
+
+<img width="1621" height="902" alt="table" src="https://github.com/user-attachments/assets/bdfd7e3a-5519-4626-b2dc-8b4f3270feeb" />
+
+
+
+####System Architecture:
+
+<img width="805" height="350" alt="image" src="https://github.com/user-attachments/assets/e7828e33-6738-4a17-b46a-6553956cf8f1" />
+
+
+
+###Working Flow
+
+<img width="822" height="300" alt="image" src="https://github.com/user-attachments/assets/6302475b-54c7-4c12-9c7c-f5ba61f1c6f4" />
+
+
+
+
+### Requirements and Components:
+
+<img width="1745" height="1518" alt="table2" src="https://github.com/user-attachments/assets/036cc254-d422-4912-873c-1163553153ca" />
+
+
+###Functional compinent
+
+<img width="1481" height="1218" alt="table_fr" src="https://github.com/user-attachments/assets/93b78ea7-861f-4d1a-99ff-ea9dcca92a38" />
+
+
+
+Non Functional omponents:
+
+<img width="1419" height="863" alt="table_nfr" src="https://github.com/user-attachments/assets/c4a1ab53-3b30-4fe6-905f-fc4f04047a07" />
+
+
+
+@###Technology Table:
+
+
+<img width="1357" height="971" alt="table_tech" src="https://github.com/user-attachments/assets/bd35ab8c-3f8b-4d6c-ae8e-2582f55d8c0f" />
+
+
+
+##Gantt Chart
+
+<img width="738" height="697" alt="image" src="https://github.com/user-attachments/assets/d3ace7e0-7694-4dc0-a3f9-3d539c2dace4" />
+
+
+
+##UML
+
+<img width="622" height="360" alt="image" src="https://github.com/user-attachments/assets/d8caeb95-eb73-4cc4-8ea9-a11f1a7decc4" />
+
+
+<img width="712" height="387" alt="image" src="https://github.com/user-attachments/assets/60b6d3f6-308e-41f7-8ac1-82be86d05678" />
+
+<img width="660" height="612" alt="image" src="https://github.com/user-attachments/assets/312cf608-f532-4421-b5f2-7ebad1c07b0b" />
+
+
+
+###Activity Diagram
+
+<img width="477" height="586" alt="image" src="https://github.com/user-attachments/assets/cb3cfeeb-73dd-4105-92ad-79af4084af82" />
+
+
+Relational Diagram
+<img width="565" height="453" alt="image" src="https://github.com/user-attachments/assets/7a8d189f-3e6f-40fb-9f20-b924f8dfb2e9" />
+
+
+##3Java Code
+<img width="587" height="781" alt="image" src="https://github.com/user-attachments/assets/d1f35ac0-39a7-4feb-9692-78f4cf910cc8" />
+
+
+
+
+
+
+
+
+
 
 Latex code for project proposal:
 
